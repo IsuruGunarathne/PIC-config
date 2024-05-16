@@ -42,4 +42,4 @@ extends:
     deploymentPath: Terraform/Azure
     backend_resource_group_name: rnd-charindut-isuru
     backend_container_name: terraform-state
-    backend_key: terraform.tfstate
+    backend_key: pic-config.tfstate
