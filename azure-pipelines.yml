@@ -1,0 +1,45 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - README.md # Assuming README.md is not modified frequently
+
+pr: none
+
+resources:
+  repositories:
+    - repository: Terraform
+      type: github
+      name: IsuruGunarathne/Terraform
+      endpoint: github.com_IsuruGunarathne
+
+    - repository: Terraform-teamplates
+      type: github
+      name: IsuruGunarathne/Terraform-templates
+      endpoint: github.com_IsuruGunarathne
+
+    - repository: PIC-configs
+      type: github
+      name: IsuruGunarathne/PIC-configs
+      endpoint: github.com_IsuruGunarathne
+
+pool:
+  vmImage: ubuntu-latest
+
+# run template from Terraform repository template name : tf-template.yaml
+extends:
+  template: tf-template.yaml@Terraform-teamplates
+  parameters:
+    storage_account_name: charindutisurug
+    storageAccountKey: $(storageAccountKey)
+    planContainerName: terraform-plans
+    userEmail: $(userEmail)
+    configRepo: PIC-configs
+    configPath: PIC-configs/Azure/conf.auto.tfvars
+    deploymentRepo: Terraform
+    deploymentPath: Terraform/Azure
+    backend_resource_group_name: rnd-charindut-isuru
+    backend_container_name: terraform-state
+    backend_key: terraform.tfstate
