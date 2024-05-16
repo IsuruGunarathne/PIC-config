@@ -20,9 +20,9 @@ resources:
       name: IsuruGunarathne/Terraform-templates
       endpoint: github.com_IsuruGunarathne
 
-    - repository: PIC-configs
+    - repository: PIC-config
       type: github
-      name: IsuruGunarathne/PIC-configs
+      name: IsuruGunarathne/PIC-config
       endpoint: github.com_IsuruGunarathne
 
 pool:
@@ -36,8 +36,8 @@ extends:
     storageAccountKey: $(storageAccountKey)
     planContainerName: terraform-plans
     userEmail: $(userEmail)
-    configRepo: PIC-configs
-    configPath: PIC-configs/Azure/conf.auto.tfvars
+    configRepo: PIC-config
+    configPath: PIC-config/Azure/conf.auto.tfvars
     deploymentRepo: Terraform
     deploymentPath: Terraform/Azure
     backend_resource_group_name: rnd-charindut-isuru
